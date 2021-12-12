@@ -2,7 +2,11 @@
 
 // 改行コードの指定
 const lineBreakStr = '\n';
+
+// オプションデフォルト
 let deleteEndLineBreak = true;
+let addBeforeLineBreak = false;
+let beforeLineBreakCount = 0;
 
 // 要素の取得
 const elem = {
@@ -74,12 +78,22 @@ function commandCopy(copyButtonElem) {
     const classArr = copyButtonElem.className.split(' ');
     let targetNumberStr = '';
     classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
-    if (targetNumberStr === '') {alert('コピーできませんでした'); return;}
+    if (targetNumberStr === '') {
+        alert('コピーできませんでした');
+        return;
+    }
     
     // 数字始まりのクラス名を querySelector する場合はクラス名エスケープが必要
     const escapeStr = '\\3';
     const copyTargetElem = document.querySelector('.command.' + escapeStr + targetNumberStr);
     let copyText = copyTargetElem.innerText;
+    
+    // 最初に改行を付加
+    if (addBeforeLineBreak) {
+        let beforeLineBreak = '';
+        for (let i = 0; i < beforeLineBreakCount; i++) beforeLineBreak += lineBreakStr;
+        copyText = beforeLineBreak + copyText;
+    }
     
     // 最後の改行を削除
     if (deleteEndLineBreak) {
