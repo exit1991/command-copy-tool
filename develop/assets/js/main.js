@@ -4,21 +4,24 @@
 const lineBreakStr = '\n';
 
 // オプションデフォルト
-let deleteEndLineBreak = true;
+let addAfterLineBreak = false;
 let addBeforeLineBreak = false;
 let beforeLineBreakCount = 0;
 
 // 要素の取得
 const elem = {
-    'input-text':    document.querySelector('#input-text')
-    ,'exec-button':  document.querySelector('#exec-button')
-    ,'clear-button': document.querySelector('#clear-button')
-    ,'output-area':  document.querySelector('#output-area')
+    'docText':           document.querySelector('#docText')
+    ,'execButton':       document.querySelector('#execButton')
+    ,'clearButton':      document.querySelector('#clearButton')
+    ,'outputArea':       document.querySelector('#outputArea')
+    ,'rdAddBefLnBrNo':   document.querySelector('#rdAddBefLnBrNo')
+    ,'rdAddBefLnBrYes':  document.querySelector('#rdAddBefLnBrYes')
+    ,'iptAddBefLnBrCnt': document.querySelector('#iptAddBefLnBrCnt')
 }
 
 
-elem['exec-button'].addEventListener('click', () => {
-    let inputStr = elem['input-text'].value;
+elem['execButton'].addEventListener('click', () => {
+    let inputStr = elem['docText'].value;
     
     // 最後に改行が含まれないテキストでは、
     // 「最後の改行を含めるコピー」の設定の際に改行が作れないため
@@ -29,14 +32,14 @@ elem['exec-button'].addEventListener('click', () => {
     const splitRegExp = new RegExp('^' + lineBreakStr, 'gm');
     const inputArr = inputStr.split(splitRegExp);
     const filterdInputArr = inputArr.filter(v => v !== '');
-    console.log(inputArr);
-    console.log(filterdInputArr);
+    // console.log(inputArr);
+    // console.log(filterdInputArr);
     
     // ボタンとコピー対象を紐づけるためのクラス連番
     let newElemCount = 0;
     
     // コピーツールの初期化と組立
-    elem['output-area'].innerHTML = '';
+    elem['outputArea'].innerHTML = '';
     filterdInputArr.forEach(oneBlock => {
         newElemCount += 1;
         
@@ -63,13 +66,22 @@ elem['exec-button'].addEventListener('click', () => {
         newElemPre.appendChild(newElemCode);
         const divAppendElems = [newElemH2, newElemButton, newElemPre];
         divAppendElems.forEach(elem => newElemDiv.appendChild(elem));
-        elem['output-area'].appendChild(newElemDiv);
+        elem['outputArea'].appendChild(newElemDiv);
     });
 });
 
 
-elem['clear-button'].addEventListener('click', () => {
-    elem['output-area'].innerHTML = '';
+elem['clearButton'].addEventListener('click', () => {
+    elem['outputArea'].innerHTML = '';
+});
+
+
+elem['rdAddBefLnBrNo'].addEventListener('click', () => {
+    elem['iptAddBefLnBrCnt'].setAttribute('disabled', '');
+});
+
+elem['rdAddBefLnBrYes'].addEventListener('click', () => {
+    elem['iptAddBefLnBrCnt'].removeAttribute('disabled');
 });
 
 
@@ -89,6 +101,8 @@ function commandCopy(copyButtonElem) {
     let copyText = copyTargetElem.innerText;
     
     // 最初に改行を付加
+    addBeforeLineBreak = document.addBefLnBr.rdAddBefLnBr[1].checked;
+    beforeLineBreakCount = document.addBefLnBr.iptAddBefLnBrCnt.value;
     if (addBeforeLineBreak) {
         let beforeLineBreak = '';
         for (let i = 0; i < beforeLineBreakCount; i++) beforeLineBreak += lineBreakStr;
@@ -96,7 +110,8 @@ function commandCopy(copyButtonElem) {
     }
     
     // 最後の改行を削除
-    if (deleteEndLineBreak) {
+    addAfterLineBreak = document.addAftLnBr.rdAddAftLnBr[1].checked;
+    if (!addAfterLineBreak) {
         const replaceRegExp = new RegExp(lineBreakStr + '$', 'g');
         copyText = copyText.replace(replaceRegExp, '');
     }
