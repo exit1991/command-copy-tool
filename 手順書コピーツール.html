@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手順書コマンドコピーツール</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            'use strict'
+            const lineBreakStr = '\n';
+            const elem = {
+                 'input-text':  document.querySelector('#input-text')
+                ,'exec-button': document.querySelector('#exec-button')
+                ,'output-area': document.querySelector('#output-area')
+            }
+            elem['exec-button'].addEventListener('click', () => {
+                const inputStr = elem['input-text'].value;
+                const splitRegExp = new RegExp('^' + lineBreakStr, 'gm');
+                const inputArr = inputStr.split(splitRegExp);
+                const filterdInputArr = inputArr.filter(v => v !== '');
+                elem['output-area'].innerHTML = '';
+                let newElemCount = 0;
+                filterdInputArr.forEach(oneBlock => {
+                    newElemCount += 1;
+                    const newElemDiv = document.createElement('div');
+                    const newElemPre = document.createElement('pre');
+                    const newElemCode = document.createElement('code');
+                    newElemCode.innerText = oneBlock;
+                    newElemCode.classList.add('command', newElemCount);
+                    const newElemButton = document.createElement('button');
+                    newElemButton.setAttribute('type', 'button');
+                    newElemButton.innerText = 'コピー';
+                    newElemButton.classList.add('copy', newElemCount);
+                    newElemButton.addEventListener('click', () => {
+                        commandCopy(newElemButton);
+                    });
+                    const newElemH2 = document.createElement('h2');
+                    newElemH2.innerText = newElemCount;
+                    newElemPre.appendChild(newElemCode);
+                    newElemDiv.appendChild(newElemH2);
+                    newElemDiv.appendChild(newElemButton);
+                    newElemDiv.appendChild(newElemPre);
+                    elem['output-area'].appendChild(newElemDiv);
+                });
+            });
+            function commandCopy(copyButtonElem) {
+                const classArr = copyButtonElem.className.split(' ');
+                let targetNumberStr = '';
+                classArr.forEach(className => {
+                    if (!isNaN(className)) {
+                        targetNumberStr = className;
+                    }
+                });
+                const escapeStr = '\\3';
+                const copyTargetElem = document.querySelector('.command.' + escapeStr + targetNumberStr);
+                let copyText = copyTargetElem.innerText;
+                const replaceRegExp = new RegExp(lineBreakStr + '$', 'g');
+                copyText = copyText.replace(replaceRegExp,'');
+                navigator.clipboard.writeText(copyText);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>手順書コマンドコピーツール</h1>
+    </header>
+    <main>
+        <section>
+            <h1>手順書テキスト</h1>
+            <p>ここに手順書となるテキストを貼り付けてください</p>
+            <p><textarea id="input-text" name="input-text" rows="15" cols="50" placeholder="ここに手順書となるテキストを貼り付けてください"></textarea></p>
+            <p><button id="exec-button" type="button">コピーツール化実行</button></p>
+        </section>
+        <section>
+            <h1>出力コピーツール</h1>
+            <div id="output-area"></div>
+        </section>
+    </main>
+</body>
+</html>
