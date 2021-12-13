@@ -45,6 +45,7 @@ elem['execButton'].addEventListener('click', () => {
         
         // １項目分要素
         const newElemDiv = document.createElement('div');
+        newElemDiv.classList.add('command-grp');
         
         // コピー対象となる要素
         const newElemPre = document.createElement('pre');

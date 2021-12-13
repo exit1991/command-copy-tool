@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手順書コマンドコピーツール</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/main.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>手順書コマンドコピーツール</h1>
+        <h1 class="page-title">手順書コマンドコピーツール</h1>
     </header>
     <main>
         <section>
@@ -23,8 +24,33 @@
                 <button id="execButton" type="button">コピーツール化実行</button>
                 <button id="clearButton" type="button">ツールクリア</button>
             </section>
+            <!-- <section>
+                <h1>コピーオプション</h1>
+                <form name="addBefLnBr">
+                    <fieldset>
+                        <legend>最初に改行をいれる</legend>
+                        <input id="rdAddBefLnBrNo" type="radio" name="rdAddBefLnBr" checked>
+                        <label for="rdAddBefLnBrNo">いれない</label>
+                        <input id="rdAddBefLnBrYes" type="radio" name="rdAddBefLnBr">
+                        <label for="rdAddBefLnBrYes">いれる</label>
+                        <input id="iptAddBefLnBrCnt" type="number" value="2" name="iptAddBefLnBrCnt" disabled>
+                    </fieldset>
+                </form>
+                <form name="addAftLnBr">
+                    <fieldset>
+                        <legend>最後に改行をいれる</legend>
+                        <input id="rdAddAftLnBrNo" type="radio" name="rdAddAftLnBr" checked>
+                        <label for="rdAddAftLnBrNo">いれない</label>
+                        <input id="rdAddAftLnBrYes" type="radio" name="rdAddAftLnBr">
+                        <label for="rdAddAftLnBrYes">いれる</label>
+                    </fieldset>
+                </form>
+            </section> -->
+        </section>
+        <section>
+            <h1>コピーツール</h1>
             <section>
-                <h1>オプション</h1>
+                <h1>コピーオプション</h1>
                 <form name="addBefLnBr">
                     <fieldset>
                         <legend>最初に改行をいれる</legend>
@@ -45,9 +71,6 @@
                     </fieldset>
                 </form>
             </section>
-        </section>
-        <section>
-            <h1>出力コピーツール</h1>
             <div id="outputArea"></div>
         </section>
     </main>
