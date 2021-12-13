@@ -9,7 +9,7 @@ body {
 
 .page-title {
     position: relative;
-    padding: 1.5rem 1.5rem calc(1.5rem + 10px);
+    padding: 1.1rem 1.5rem calc(1.1rem + 10px);
     border: 2px solid #000;
     &:after {
         position: absolute;
@@ -44,6 +44,12 @@ main>section>section {
     }
 }
 
+#execButton, #clearButton {
+    padding: 0.5rem 1.4rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
 fieldset {
     margin: 1rem;
     border-color: #ddd;
@@ -75,18 +81,25 @@ legend {
         background: #333;
         color: #fff;
         font-size: 2rem;
-        width: 3rem;
+        // width: 3rem;
         text-align: center;
+        align-self: stretch;
     }
     
     button {
         padding: 0 1rem;
-        margin: 0 0.5rem;
+        margin: 1.8rem 1rem 0;
+        align-self: flex-start;
     }
     
     pre {
         margin: 0 0.5rem;
+        padding: 0.8rem 0;
+        font-size: 0.8rem;
+        font-family: monospace;
+        white-space: normal;
     }
+    
 }
 
 

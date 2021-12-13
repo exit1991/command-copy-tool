@@ -8,7 +8,7 @@ body {
 
 .page-title {
   position: relative;
-  padding: 1.5rem 1.5rem calc(1.5rem + 10px);
+  padding: 1.1rem 1.5rem calc(1.1rem + 10px);
   border: 2px solid #000;
 }
 
@@ -44,6 +44,12 @@ main > section > section {
 main > section > section > h1 {
   padding: 0.3rem 1rem;
   border-left: 4px dotted #000;
+}
+
+#execButton, #clearButton {
+  padding: 0.5rem 1.4rem;
+  margin-right: 1rem;
+  font-weight: bold;
 }
 
 fieldset {
@@ -82,16 +88,24 @@ legend {
   background: #333;
   color: #fff;
   font-size: 2rem;
-  width: 3rem;
   text-align: center;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
 }
 
 .command-grp button {
   padding: 0 1rem;
-  margin: 0 0.5rem;
+  margin: 1.8rem 1rem 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .command-grp pre {
   margin: 0 0.5rem;
+  padding: 0.8rem 0;
+  font-size: 0.8rem;
+  font-family: monospace;
+  white-space: normal;
 }
 /*# sourceMappingURL=style.css.map */
