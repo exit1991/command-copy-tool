@@ -33,6 +33,7 @@ main > section {
 
 main > section > h1 {
   padding: 0.5rem 2rem;
+  margin: 1rem 0 0;
   border-left: 6px double #000;
   background: #f4f4f4;
 }
@@ -81,6 +82,10 @@ legend {
   border-radius: 12px;
 }
 
+.command-grp.select {
+  border-color: #aa3a3a;
+}
+
 .command-grp h2 {
   margin: 0 0.5rem 0 0;
   padding: 1rem;
@@ -92,6 +97,11 @@ legend {
   -ms-flex-item-align: stretch;
       -ms-grid-row-align: stretch;
       align-self: stretch;
+}
+
+.command-grp h2.select {
+  border-color: #aa3a3a;
+  background: #aa3a3a;
 }
 
 .command-grp button {

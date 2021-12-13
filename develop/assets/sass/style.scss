@@ -31,6 +31,7 @@ main>section {
     padding: 0.5rem 0;
     &>h1 {
         padding: 0.5rem 2rem;
+        margin: 1rem 0 0;
         border-left: 6px double #000;
         background: #f4f4f4;
     }
@@ -74,6 +75,12 @@ legend {
     border: 3px solid #333;
     border-radius: 12px;
     
+    $selecting-color: rgb(170, 58, 58);
+    
+    &.select {
+        border-color: $selecting-color;
+    }
+    
     h2 {
         margin: 0 0.5rem 0 0;
         padding: 1rem;
@@ -81,9 +88,13 @@ legend {
         background: #333;
         color: #fff;
         font-size: 2rem;
-        // width: 3rem;
         text-align: center;
         align-self: stretch;
+        
+        &.select {
+            border-color: $selecting-color;
+            background: $selecting-color;
+        }
     }
     
     button {
