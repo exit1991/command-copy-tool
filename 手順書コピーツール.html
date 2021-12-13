@@ -5,93 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手順書コマンドコピーツール</title>
     <style>
-        :root {font-size: 16px;}
-        body {margin: 2rem;}
+        :root {
+          font-size: 16px;
+        }
+        body {
+          margin: 2rem;
+        }
         .page-title {
-            position: relative;
-            padding: 1.1rem 1.5rem calc(1.1rem + 10px);
-            border: 2px solid #000;
+          position: relative;
+          padding: 1.1rem 1.5rem calc(1.1rem + 10px);
+          border: 2px solid #000;
         }
         .page-title:after {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            content: '';
-            border-top: 2px solid #000;
-            background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent 2px, transparent 5px);
-            background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
-            background-size: 7px 7px;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 10px;
+          content: '';
+          border-top: 2px solid #000;
+          background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent 2px, transparent 5px);
+          background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
+          background-size: 7px 7px;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
         }
-        main > section {padding: 0.5rem 0;}
+        main > section {
+          padding: 0.5rem 0;
+        }
         main > section > h1 {
-            padding: 0.5rem 2rem;
-            border-left: 6px double #000;
-            background: #f4f4f4;
+          padding: 0.5rem 2rem;
+          margin: 1rem 0 0;
+          border-left: 6px double #000;
+          background: #f4f4f4;
         }
-        main > section > section {padding: 0.5rem;}
+        main > section > section {
+          padding: 0.5rem;
+        }
         main > section > section > h1 {
-            padding: 0.3rem 1rem;
-            border-left: 4px dotted #000;
+          padding: 0.3rem 1rem;
+          border-left: 4px dotted #000;
         }
         #execButton, #clearButton {
-            padding: 0.5rem 1.4rem;
-            margin-right: 1rem;
-            font-weight: bold;
+          padding: 0.5rem 1.4rem;
+          margin-right: 1rem;
+          font-weight: bold;
         }
         fieldset {
-            margin: 1rem;
-            border-color: #ddd;
-            width: 50vw;
-            border-radius: 8px;
+          margin: 1rem;
+          border-color: #ddd;
+          width: 50vw;
+          border-radius: 8px;
         }
         legend {
-            background-color: #fff;
-            background-image: -webkit-repeating-linear-gradient(135deg, #ddd, #ddd 1px, transparent 2px, transparent 5px);
-            background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 1px, transparent 2px, transparent 5px);
-            color: #000;
-            padding: 0 1rem;
-            font-size: 0.8rem;
-            font-weight: bold;
+          background-color: #fff;
+          background-image: -webkit-repeating-linear-gradient(135deg, #ddd, #ddd 1px, transparent 2px, transparent 5px);
+          background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 1px, transparent 2px, transparent 5px);
+          color: #000;
+          padding: 0 1rem;
+          font-size: 0.8rem;
+          font-weight: bold;
         }
         .command-grp {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            margin: 1rem 0;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            border: 3px solid #333;
-            border-radius: 12px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          margin: 1rem 0;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          border: 3px solid #333;
+          border-radius: 12px;
+        }
+        .command-grp.select {
+          border-color: #aa3a3a;
         }
         .command-grp h2 {
-            margin: 0 0.5rem 0 0;
-            padding: 1rem;
-            border: 3px solid #333;
-            background: #333;
-            color: #fff;
-            font-size: 2rem;
-            text-align: center;
-            -ms-flex-item-align: stretch;
-                -ms-grid-row-align: stretch;
-                align-self: stretch;
+          margin: 0 0.5rem 0 0;
+          padding: 1rem;
+          border: 3px solid #333;
+          background: #333;
+          color: #fff;
+          font-size: 2rem;
+          text-align: center;
+          -ms-flex-item-align: stretch;
+              -ms-grid-row-align: stretch;
+              align-self: stretch;
+        }
+        .command-grp h2.select {
+          border-color: #aa3a3a;
+          background: #aa3a3a;
         }
         .command-grp button {
-            padding: 0 1rem;
-            margin: 1.8rem 1rem 0;
-            -ms-flex-item-align: start;
-                align-self: flex-start;
+          padding: 0 1rem;
+          margin: 1.8rem 1rem 0;
+          -ms-flex-item-align: start;
+              align-self: flex-start;
         }
         .command-grp pre {
-            margin: 0 0.5rem;
-            padding: 0.8rem 0;
-            font-size: 0.8rem;
-            font-family: monospace;
-            white-space: normal;
+          margin: 0 0.5rem;
+          padding: 0.8rem 0;
+          font-size: 0.8rem;
+          font-family: monospace;
+          white-space: normal;
         }
     </style>
     <script>
@@ -121,7 +137,7 @@
                 filterdInputArr.forEach(oneBlock => {
                     newElemCount += 1;
                     const newElemDiv = document.createElement('div');
-                    newElemDiv.classList.add('command-grp');
+                    newElemDiv.classList.add('command-grp', newElemCount);
                     const newElemPre = document.createElement('pre');
                     const newElemCode = document.createElement('code');
                     newElemCode.innerText = oneBlock;
@@ -130,7 +146,11 @@
                     newElemButton.setAttribute('type', 'button');
                     newElemButton.innerText = 'コピー';
                     newElemButton.classList.add('copy', newElemCount);
-                    newElemButton.addEventListener('click', () => commandCopy(newElemButton));
+                    newElemButton.addEventListener('click', () => {
+                        resetCommandGrpColor();
+                        changeCommandGrpColor(newElemButton);
+                        commandCopy(newElemButton);
+                    });
                     const newElemH2 = document.createElement('h2');
                     newElemH2.innerText = newElemCount;
                     newElemPre.appendChild(newElemCode);
@@ -148,6 +168,22 @@
             elem['rdAddBefLnBrYes'].addEventListener('click', () => {
                 elem['iptAddBefLnBrCnt'].removeAttribute('disabled');
             });
+            function resetCommandGrpColor() {
+                const commandGrpElemArr = document.querySelectorAll('.command-grp');
+                commandGrpElemArr.forEach(commandGrpElem => commandGrpElem.classList.remove('select'));
+                const commandGrpH2ElemArr = document.querySelectorAll('.command-grp>h2');
+                commandGrpH2ElemArr.forEach(commandGrpElem => commandGrpElem.classList.remove('select'));
+            }
+            function changeCommandGrpColor(copyButtonElem) {
+                const classArr = copyButtonElem.className.split(' ');
+                let targetNumberStr = '';
+                classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
+                const escapeStr = '\\3';
+                const chgBrdColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr);
+                chgBrdColorTargetElem.classList.add('select');
+                const chgBgColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr + '>h2');
+                chgBgColorTargetElem.classList.add('select');
+            }
             function commandCopy(copyButtonElem) {
                 const classArr = copyButtonElem.className.split(' ');
                 let targetNumberStr = '';
