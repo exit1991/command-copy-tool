@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手順書コマンドコピーツール</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/main.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>手順書コマンドコピーツール</h1>
+        <h1 class="page-title">手順書コマンドコピーツール</h1>
     </header>
     <main>
         <section>
@@ -16,15 +17,18 @@
             <section>
                 <h1>手順書テキスト</h1>
                 <p>ここに手順書となるテキストを貼り付けてください</p>
-                <textarea id="docText" name="docText" rows="15" cols="50" placeholder="ここに手順書となるテキストを貼り付けてください"></textarea>
+                <textarea id="docText" name="docText" rows="15" cols="60" placeholder="ここに手順書となるテキストを貼り付けてください"></textarea>
             </section>
             <section>
                 <h1>処理実行</h1>
                 <button id="execButton" type="button">コピーツール化実行</button>
                 <button id="clearButton" type="button">ツールクリア</button>
             </section>
+        </section>
+        <section>
+            <h1>コピーツール</h1>
             <section>
-                <h1>オプション</h1>
+                <h1>コピーオプション</h1>
                 <form name="addBefLnBr">
                     <fieldset>
                         <legend>最初に改行をいれる</legend>
@@ -45,9 +49,6 @@
                     </fieldset>
                 </form>
             </section>
-        </section>
-        <section>
-            <h1>出力コピーツール</h1>
             <div id="outputArea"></div>
         </section>
     </main>

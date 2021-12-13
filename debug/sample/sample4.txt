@@ -1,0 +1,57 @@
+-- SQLを実行する
+SELECT
+    T1.aaa,
+    T1.bbb,
+    T1.ccc,
+    T2.ddd
+FROM
+    hoge T1
+INNSER JOIN
+    fuga T2
+ON
+    T1.ccc = T2.ccc
+WHERE
+    T1.aaa = 'hogehoge'
+ORDER BY
+    T1.bbb DESC
+;
+
+-- SQLを実行する
+SELECT
+    T1.aaa,
+    T1.bbb,
+    T1.ccc,
+    T2.ddd
+FROM
+    hoge T1
+INNSER JOIN
+    fuga T2
+ON
+    T1.ccc = T2.ccc
+WHERE
+    T1.aaa = 'hogehoge'
+ORDER BY
+    T1.bbb DESC
+;
+
+-- SQLを実行する
+SELECT
+    T1.aaa,
+    T1.bbb,
+    T1.ccc,
+    T2.ddd
+FROM
+    hoge T1
+INNSER JOIN
+    fuga T2
+ON
+    T1.ccc = T2.ccc
+WHERE
+    T1.aaa = 'hogehoge'
+ORDER BY
+    T1.bbb DESC
+;
+
+
+
+
