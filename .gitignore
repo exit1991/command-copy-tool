@@ -1,3 +1,6 @@
 
 # VSCodeの設定ファイルを除外
 .vscode/*
+
+# ツールの一時ファイルを除外
+debug/tool/compiletool/*.tmp
