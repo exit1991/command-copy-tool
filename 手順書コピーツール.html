@@ -117,6 +117,7 @@
             let addAfterLineBreak = false;
             let addBeforeLineBreak = false;
             let beforeLineBreakCount = 0;
+            const seqClassPrefix = 'seq-';
             const elem = {
                 'docText':           document.querySelector('#docText')
                 ,'execButton':       document.querySelector('#execButton')
@@ -137,19 +138,19 @@
                 filterdInputArr.forEach(oneBlock => {
                     newElemCount += 1;
                     const newElemDiv = document.createElement('div');
-                    newElemDiv.classList.add('command-grp', newElemCount);
+                    newElemDiv.classList.add('command-grp', seqClassPrefix + newElemCount);
                     const newElemPre = document.createElement('pre');
                     const newElemCode = document.createElement('code');
                     newElemCode.innerText = oneBlock;
-                    newElemCode.classList.add('command', newElemCount);
+                    newElemCode.classList.add('command', seqClassPrefix + newElemCount);
                     const newElemButton = document.createElement('button');
                     newElemButton.setAttribute('type', 'button');
                     newElemButton.innerText = 'コピー';
-                    newElemButton.classList.add('copy', newElemCount);
+                    newElemButton.classList.add('copy', seqClassPrefix + newElemCount);
                     newElemButton.addEventListener('click', () => {
                         resetCommandGrpColor();
                         changeCommandGrpColor(newElemButton);
-                        commandCopy(newElemButton);
+                        copyCommand(newElemButton);
                     });
                     const newElemH2 = document.createElement('h2');
                     newElemH2.innerText = newElemCount;
@@ -176,24 +177,22 @@
             }
             function changeCommandGrpColor(copyButtonElem) {
                 const classArr = copyButtonElem.className.split(' ');
-                let targetNumberStr = '';
-                classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
-                const escapeStr = '\\3';
-                const chgBrdColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr);
+                let targetSeqStr = '';
+                classArr.forEach(className => {if (className.match(/^seq-/)) targetSeqStr = className});
+                const chgBrdColorTargetElem = document.querySelector('.command-grp.' + targetSeqStr);
                 chgBrdColorTargetElem.classList.add('select');
-                const chgBgColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr + '>h2');
+                const chgBgColorTargetElem = document.querySelector('.command-grp.' + targetSeqStr + '>h2');
                 chgBgColorTargetElem.classList.add('select');
             }
-            function commandCopy(copyButtonElem) {
+            function copyCommand(copyButtonElem) {
                 const classArr = copyButtonElem.className.split(' ');
-                let targetNumberStr = '';
-                classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
-                if (targetNumberStr === '') {
+                let targetSeqStr = '';
+                classArr.forEach(className => {if (className.match(/^seq-/)) targetSeqStr = className});
+                if (targetSeqStr === '') {
                     alert('コピーできませんでした');
                     return;
                 }
-                const escapeStr = '\\3';
-                const copyTargetElem = document.querySelector('.command.' + escapeStr + targetNumberStr);
+                const copyTargetElem = document.querySelector('.command.' + targetSeqStr);
                 let copyText = copyTargetElem.innerText;
                 addBeforeLineBreak = document.addBefLnBr.rdAddBefLnBr[1].checked;
                 beforeLineBreakCount = document.addBefLnBr.iptAddBefLnBrCnt.value;
