@@ -22,7 +22,6 @@ const elem = {
     ,'iptAddBefLnBrCnt': document.querySelector('#iptAddBefLnBrCnt')
 }
 
-
 elem['execButton'].addEventListener('click', () => {
     let inputStr = elem['docText'].value;
     
@@ -64,7 +63,7 @@ elem['execButton'].addEventListener('click', () => {
         newElemButton.addEventListener('click', () => {
             resetCommandGrpColor();
             changeCommandGrpColor(newElemButton);
-            commandCopy(newElemButton);
+            copyCommand(newElemButton);
         });
         
         // 連番表示要素
@@ -78,11 +77,9 @@ elem['execButton'].addEventListener('click', () => {
     });
 });
 
-
 elem['clearButton'].addEventListener('click', () => {
     elem['outputArea'].innerHTML = '';
 });
-
 
 elem['rdAddBefLnBrNo'].addEventListener('click', () => {
     elem['iptAddBefLnBrCnt'].setAttribute('disabled', '');
@@ -91,7 +88,6 @@ elem['rdAddBefLnBrNo'].addEventListener('click', () => {
 elem['rdAddBefLnBrYes'].addEventListener('click', () => {
     elem['iptAddBefLnBrCnt'].removeAttribute('disabled');
 });
-
 
 function resetCommandGrpColor() {
     const commandGrpElemArr = document.querySelectorAll('.command-grp');
@@ -103,36 +99,23 @@ function resetCommandGrpColor() {
 function changeCommandGrpColor(copyButtonElem) {
     // コピーボタンに対応するコピー対象を判定させる
     const classArr = copyButtonElem.className.split(' ');
-    // let targetNumberStr = '';
     let targetSeqStr = '';
-    // classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
     classArr.forEach(className => {if (className.match(/^seq-/)) targetSeqStr = className});
-    
-    // 数字始まりのクラス名を querySelector する場合はクラス名エスケープが必要
-    // const escapeStr = '\\3';
-    // const chgBrdColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr);
     const chgBrdColorTargetElem = document.querySelector('.command-grp.' + targetSeqStr);
     chgBrdColorTargetElem.classList.add('select');
-    // const chgBgColorTargetElem = document.querySelector('.command-grp.' + escapeStr + targetNumberStr + '>h2');
     const chgBgColorTargetElem = document.querySelector('.command-grp.' + targetSeqStr + '>h2');
     chgBgColorTargetElem.classList.add('select');
 }
 
-function commandCopy(copyButtonElem) {
+function copyCommand(copyButtonElem) {
     // コピーボタンに対応するコピー対象を判定させる
     const classArr = copyButtonElem.className.split(' ');
-    // let targetNumberStr = '';
     let targetSeqStr = '';
-    // classArr.forEach(className => {if (!isNaN(className)) targetNumberStr = className});
     classArr.forEach(className => {if (className.match(/^seq-/)) targetSeqStr = className});
     if (targetSeqStr === '') {
         alert('コピーできませんでした');
         return;
     }
-    
-    // 数字始まりのクラス名を querySelector する場合はクラス名エスケープが必要
-    // const escapeStr = '\\3';
-    // const copyTargetElem = document.querySelector('.command.' + escapeStr + targetNumberStr);
     const copyTargetElem = document.querySelector('.command.' + targetSeqStr);
     let copyText = copyTargetElem.innerText;
     
