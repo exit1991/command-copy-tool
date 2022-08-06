@@ -30,7 +30,7 @@ elem['execButton'].addEventListener('click', () => {
     // あらかじめ最後に改行を付加する
     inputStr += lineBreakStr;
     
-    // 空白行で分割させる
+    // 空白行で分割、さらに空白行がある場合は除去
     const splitRegExp = new RegExp('^' + lineBreakStr, 'gm');
     const inputArr = inputStr.split(splitRegExp);
     const filterdInputArr = inputArr.filter(v => v !== '');
@@ -45,17 +45,17 @@ elem['execButton'].addEventListener('click', () => {
     filterdInputArr.forEach(oneBlock => {
         newElemCount += 1;
         
-        // １項目分要素
+        // １項目分ラップ要素を作成
         const newElemDiv = document.createElement('div');
         newElemDiv.classList.add('command-grp', seqClassPrefix + newElemCount);
         
-        // コピー対象となる要素
+        // コピー対象となる要素を作成
         const newElemPre = document.createElement('pre');
         const newElemCode = document.createElement('code');
         newElemCode.innerText = oneBlock;
         newElemCode.classList.add('command', seqClassPrefix + newElemCount);
         
-        // コピーボタン要素
+        // コピーボタン要素を作成
         const newElemButton = document.createElement('button');
         newElemButton.setAttribute('type', 'button');
         newElemButton.innerText = 'コピー';
@@ -66,10 +66,11 @@ elem['execButton'].addEventListener('click', () => {
             copyCommand(newElemButton);
         });
         
-        // 連番表示要素
+        // 連番表示要素を作成
         const newElemH2 = document.createElement('h2');
         newElemH2.innerText = newElemCount;
         
+        // 作成要素組み立て、組み立てた要素を出力エリアに追加
         newElemPre.appendChild(newElemCode);
         const divAppendElems = [newElemH2, newElemButton, newElemPre];
         divAppendElems.forEach(elem => newElemDiv.appendChild(elem));

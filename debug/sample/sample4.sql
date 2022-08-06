@@ -5,9 +5,9 @@ SELECT
     T1.ccc,
     T2.ddd
 FROM
-    hoge T1
-INNSER JOIN
-    fuga T2
+    hoge1 T1
+INNER JOIN
+    fuga1 T2
 ON
     T1.ccc = T2.ccc
 WHERE
@@ -23,9 +23,9 @@ SELECT
     T1.ccc,
     T2.ddd
 FROM
-    hoge T1
-INNSER JOIN
-    fuga T2
+    hoge2 T1
+INNER JOIN
+    fuga2 T2
 ON
     T1.ccc = T2.ccc
 WHERE
@@ -41,9 +41,9 @@ SELECT
     T1.ccc,
     T2.ddd
 FROM
-    hoge T1
-INNSER JOIN
-    fuga T2
+    hoge3 T1
+INNER JOIN
+    fuga3 T2
 ON
     T1.ccc = T2.ccc
 WHERE
@@ -51,7 +51,4 @@ WHERE
 ORDER BY
     T1.bbb DESC
 ;
-
-
-
 

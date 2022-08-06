@@ -108,7 +108,7 @@ legend {
         padding: 0.8rem 0;
         font-size: 0.8rem;
         font-family: monospace;
-        white-space: normal;
+        white-space: pre-wrap; // インデントが削除される問題対応、normalではNG
     }
     
 }

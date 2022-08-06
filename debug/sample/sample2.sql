@@ -1,91 +1,91 @@
--- SQL
+-- SQL01
 SELECT COUNT(*) FROM hoge1;
 
--- SQL
+-- SQL02
 SELECT COUNT(*) FROM hoge2;
 
--- SQL
+-- SQL03
 SELECT COUNT(*) FROM hoge3;
 
--- SQL
+-- SQL04
 SELECT COUNT(*) FROM hoge4;
 
--- SQL
+-- SQL05
 SELECT COUNT(*) FROM hoge5;
 
--- SQL
+-- SQL06
 SELECT COUNT(*) FROM hoge6;
 
--- SQL
+-- SQL07
 SELECT COUNT(*) FROM hoge7;
 
--- SQL
+-- SQL08
 SELECT COUNT(*) FROM hoge8;
 
--- SQL
+-- SQL09
 SELECT COUNT(*) FROM hoge9;
 
--- SQL
+-- SQL10
 SELECT COUNT(*) FROM hoge10;
 
--- SQL
+-- SQL11
 SELECT COUNT(*) FROM hoge11;
 
--- SQL
+-- SQL12
 SELECT COUNT(*) FROM hoge12;
 
--- SQL
+-- SQL13
 SELECT COUNT(*) FROM hoge13;
 
--- SQL
+-- SQL14
 SELECT COUNT(*) FROM hoge14;
 
--- SQL
+-- SQL15
 SELECT COUNT(*) FROM hoge15;
 
--- SQL
+-- SQL16
 SELECT COUNT(*) FROM hoge16;
 
--- SQL
+-- SQL17
 SELECT COUNT(*) FROM hoge17;
 
--- SQL
+-- SQL18
 SELECT COUNT(*) FROM hoge18;
 
--- SQL
+-- SQL19
 SELECT COUNT(*) FROM hoge19;
 
--- SQL
+-- SQL20
 SELECT COUNT(*) FROM hoge20;
 
--- SQL
+-- SQL21
 SELECT COUNT(*) FROM hoge21;
 
--- SQL
+-- SQL22
 SELECT COUNT(*) FROM hoge22;
 
--- SQL
+-- SQL23
 SELECT COUNT(*) FROM hoge23;
 
--- SQL
+-- SQL24
 SELECT COUNT(*) FROM hoge24;
 
--- SQL
+-- SQL25
 SELECT COUNT(*) FROM hoge25;
 
--- SQL
+-- SQL26
 SELECT COUNT(*) FROM hoge26;
 
--- SQL
+-- SQL27
 SELECT COUNT(*) FROM hoge27;
 
--- SQL
+-- SQL28
 SELECT COUNT(*) FROM hoge28;
 
--- SQL
+-- SQL29
 SELECT COUNT(*) FROM hoge29;
 
--- SQL
+-- SQL30
 SELECT COUNT(*) FROM hoge30;
 
 
